@@ -79,7 +79,7 @@ module Refile
     get "/:backend/presign" do
       halt 404 unless upload_allowed?
       content_type :json
-      backend.presign.to_json
+      backend.presign({content_type: params[:content_type]}).to_json
     end
 
     not_found do

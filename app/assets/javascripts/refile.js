@@ -64,6 +64,7 @@
           dispatchEvent(input, "presign:start");
           var presignXhr = new XMLHttpRequest();
           var presignUrl = url + "?t=" + Date.now() + "." + index;
+          presignUrl += '&content_type=' + encodeURIComponent(xhr.file.type);
           presignXhr.addEventListener("load", function() {
             dispatchEvent(input, "presign:complete");
             if(isSuccess(presignXhr)) {
